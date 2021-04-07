@@ -7,7 +7,7 @@ public abstract class Character {
     final int ACE = 14;
 
     private String name;
-    boolean busted;
+    boolean busted, normalTBusted;
     ArrayList<Card> cards = new ArrayList<Card>(); // each character has cards
 
     private int total, altTotal = 0; // altTotal if drawn an ace
@@ -29,6 +29,8 @@ public abstract class Character {
         cards.clear();
         this.total = 0;
         this.altTotal = 0;
+        this.busted = false;
+        this.amountDrawn = 0;
     }
 
     public void drawCard(Deck d) { // draw from top of deck
@@ -38,13 +40,15 @@ public abstract class Character {
         d.removeCardAt(d.getAmount() - 1);
 
         this.total = this.total + drawn.getValue();
-        System.out.println("TOTAL: " + this.total);
 
         if (drawn.getRank() == ACE) {
             this.altTotal = (this.total - 11) + 1; // instead of adding 11, add 1 for aces
-            System.out.println("ALT TOTAL: " + altTotal);
-        }
 
+        } else {
+            this.altTotal = this.altTotal + drawn.getValue();
+        }
+        System.out.println("TOTAL: " + this.total);
+        System.out.println("ALT TOTAL: " + altTotal);
         this.amountDrawn++;
 
     }
@@ -72,11 +76,14 @@ public abstract class Character {
     }
 
     public int getUsedTotal() { // returns total that will be used if total
+
         if (this.getTotal() > 21 && this.getAltTotal() > 0) // if has an alt total and normal total
                                                             // is busted
         {
+            System.out.println("USING ALT " + altTotal);
             return this.getAltTotal();
         } else {
+            System.out.println(total);
             return this.getTotal();
         }
     }
@@ -87,7 +94,9 @@ public abstract class Character {
 
     public boolean isBusted() {
         if (this.getUsedTotal() > 21) {
+            System.out.println("PLR BUSTED");
             return true;
+
         }
         return false;
     }
