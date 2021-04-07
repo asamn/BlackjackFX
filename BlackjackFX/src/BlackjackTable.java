@@ -104,10 +104,10 @@ public class BlackjackTable extends Application {
 
         pCards.setVgap(50);
         pCards.setHgap(50); // set gaps between each grid coordinate
-        pCards.setPadding(new Insets(5, 5, 5, 5)); // set 5 padding between each grid block
+        pCards.setPadding(new Insets(5, 100, 5, 100)); // set padding of pane top right bottom left
         dCards.setVgap(50);
         dCards.setHgap(50);
-        dCards.setPadding(new Insets(5, 5, 5, 5));
+        dCards.setPadding(new Insets(5, 100, 5, 100)); // same as pCards except top
 
         GridPane playerStats = new GridPane();
         playerStats.setPrefSize(100, 75); // width, height
@@ -140,7 +140,7 @@ public class BlackjackTable extends Application {
         Rectangle resultBackground = new Rectangle();
 
         resultBackground.setFill(Color.LIGHTGREY);
-        resultBackground.setWidth(450);
+        resultBackground.setWidth(300);
         resultBackground.setHeight(100);
         resultBackground.setX(
                 resultPane.getLayoutX() - (resultPane.getLayoutX() - resultBackground.getWidth()));
@@ -156,7 +156,7 @@ public class BlackjackTable extends Application {
 
         // pCards.setGridLinesVisible(true); // debug
 
-        Scene table = new Scene(p, 1200, 750); // scene with pane, window dimensions
+        Scene table = new Scene(p, 1200, 775); // scene with pane, window dimensions
 
         primaryStage.setTitle("Blackjack");
         primaryStage.setScene(table);
@@ -323,6 +323,7 @@ public class BlackjackTable extends Application {
         resultText.setTranslateY(-1 * resultBackground.getHeight());
         resultPane.getChildren().add(ok);
         ok.setTranslateY(-1 * resultBackground.getHeight());
+        ok.setTranslateX(resultText.getTranslateX());
         resultPane.toFront();
 
     }
