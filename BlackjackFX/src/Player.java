@@ -3,6 +3,7 @@ public class Player extends Character {
 
     int currency;
     boolean isStanding;
+    int bet;
 
     public Player(String n) {
         super(n);
@@ -29,5 +30,11 @@ public class Player extends Character {
 
     public void removeCurrency(int x) {
         this.currency -= x;
+    }
+    public void setBet(int y) {
+    	this.bet = y;
+    }
+    public int getBet() {
+    	return this.bet;
     }
 }
