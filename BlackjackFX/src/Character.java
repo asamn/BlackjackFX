@@ -17,7 +17,7 @@ public abstract class Character {
     {
         this.name = n;
         this.total = 0;
-        this.altTotal = -1; // -1 means no alt total
+        this.altTotal = 0;
         this.busted = false;
     }
 
@@ -31,6 +31,7 @@ public abstract class Character {
         this.altTotal = 0;
         this.busted = false;
         this.amountDrawn = 0;
+
     }
 
     public void drawCard(Deck d) { // draw from top of deck
@@ -99,5 +100,9 @@ public abstract class Character {
 
         }
         return false;
+    }
+
+    public String getName() {
+        return this.name;
     }
 }

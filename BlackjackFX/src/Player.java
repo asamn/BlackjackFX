@@ -12,6 +12,13 @@ public class Player extends Character {
 
     }
 
+    public Player(String n, int credits) {
+        super(n);
+        isStanding = false;
+        currency = credits;
+
+    }
+
     public void stand() {
         this.isStanding = true;
     }
@@ -31,10 +38,12 @@ public class Player extends Character {
     public void removeCurrency(int x) {
         this.currency -= x;
     }
+
     public void setBet(int y) {
-    	this.bet = y;
+        this.bet = y;
     }
+
     public int getBet() {
-    	return this.bet;
+        return this.bet;
     }
 }
