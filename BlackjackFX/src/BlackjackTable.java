@@ -63,13 +63,15 @@ public class BlackjackTable extends Application {
         } catch (IOException e) {
             System.out.println("File not found! ");
             e.printStackTrace();
-            plr = new Player("Player");
             File f = new File("data.txt");
             try {
                 f.createNewFile();
             } catch (IOException e1) {
                 e1.printStackTrace();
             }
+            foundSave = false;
+            System.out.println("No data found! Creating new game... ");
+            btnBet.setText("Enter Name");
 
         } catch (NoSuchElementException ex) {
             foundSave = false;
