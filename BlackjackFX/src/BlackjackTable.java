@@ -1,3 +1,5 @@
+import java.awt.TextField;
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -95,6 +97,7 @@ public class BlackjackTable extends Application {
         // Panes
         GridPane dCards = new GridPane();
         GridPane pCards = new GridPane();
+        TextField t = new TextField();
         pCards.setPrefSize(100, 250); // width, height
         dCards.setPrefSize(100, 250);
         pCards.setBorder(new Border(new BorderStroke(Color.BLACK,
@@ -108,6 +111,7 @@ public class BlackjackTable extends Application {
         dCards.setVgap(50);
         dCards.setHgap(50);
         dCards.setPadding(new Insets(5, 100, 5, 100)); // same as pCards except top
+        
 
         GridPane playerStats = new GridPane();
         playerStats.setPrefSize(100, 75); // width, height
@@ -118,7 +122,8 @@ public class BlackjackTable extends Application {
         bottomControls.setPrefSize(0, 125);
         bottomControls.setBorder(new Border(new BorderStroke(Color.GREEN,
                 BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
-        // System.out.print(btnHit.getPrefWidth());
+      bottomControls.getChildren().add(t);
+      t.setLayoutX(btnBet.getLayoutX()+300);
         int bottomPadding = 50;
         btnHit.setLayoutX(bottomPadding + 50);
         btnStand.setLayoutX(btnHit.getPrefWidth() + bottomPadding + btnHit.getLayoutX());
@@ -254,6 +259,7 @@ public class BlackjackTable extends Application {
         };
         EventHandler<ActionEvent> beginGame = new EventHandler<ActionEvent>() {
             public void handle(ActionEvent e) {
+            	
                 System.out.println(plr.isBusted());
                 bottomControls.getChildren().remove(btnBet);
                 bottomControls.getChildren().add(btnHit);
@@ -262,6 +268,7 @@ public class BlackjackTable extends Application {
                 bottomControls.getChildren().add(playerTotalTxt);
                 bottomControls.getChildren().add(actionOutput);
                 bottomControls.getChildren().add(btnPowers);
+                int betToInt = Integer.parseInt(t.getText());
 
                 btnHit.fire(); // fire btnHit's event twice to deal two cards
 
