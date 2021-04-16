@@ -7,7 +7,7 @@ public abstract class Character {
     final int ACE = 14;
 
     private String name;
-    boolean busted, normalTBusted;
+    boolean busted;
     ArrayList<Card> cards = new ArrayList<Card>(); // each character has cards
 
     private int total, altTotal = 0; // altTotal if drawn an ace
